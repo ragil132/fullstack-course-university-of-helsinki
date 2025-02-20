@@ -1,23 +1,21 @@
-const Statistics = ({ results, total, realVal, good }) => {
+import StatisticLine from "./StatisticLine"
+
+// eslint-disable-next-line react/prop-types
+const Statistics = ({ total, realVal, good, bad, neutral }) => {
 
     return (
         <div>
             <h1>statistics</h1>
 
-            <ul style={{ listStyle: "none", padding: 0 }}>
-                {
-                    results.map((result) => (
-                        <li key={result.name}>{result.name} {result.total}</li>
-                    ))
-                }
-            </ul>
-            <ul style={{ listStyle: "none", padding: 0 }}>
+            <StatisticLine text={'good'} value={good} />
+            <StatisticLine text={'neutral'} value={neutral} />
+            <StatisticLine text={'bad'} value={bad} />
 
-                <li key={'all'}>all {total}</li>
-                <li key={'avg'}>average {(realVal / total)}</li>
-                <li key={'positive'}>positive {(good / total) * 100} %</li>
 
-            </ul>
+            <StatisticLine text={'all'} value={total} />
+            <StatisticLine text={'average'} value={(realVal / total)} />
+            <StatisticLine text={'positive'} value={((good / total) * 100) + '%'} />
+
         </div>
     )
 }
