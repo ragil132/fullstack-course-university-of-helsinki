@@ -1,8 +1,9 @@
-const Total = ({ exercises }) => {
+const Total = ({ parts }) => {
+
     let total = 0
 
-    exercises.map((part) => (
-        total += part.number
+    parts.map((part) => (
+        total += part.exercises
     ))
 
     return (
